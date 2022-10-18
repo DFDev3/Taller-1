@@ -12,7 +12,6 @@ sum_xy=sum(xy)
 for i in range(len(x)):
     x2.append(x[i]*x[i])
 sum_x2=sum(x2)
-print(f"{sum_x} + {sum_y} + {sum_xy} + {sum_x2} + {prom_x} + {prom_y}")
 m=((len(x)*(sum_xy))-(sum_x*sum_y)/((len(x)*sum_x2)-(sum_x*sum_x)))
 b=float(prom_y-(m)*(prom_x))
-print(f"La ecuación de la recta de la regresión lineal es y = {m}x+{b}")
+print(f"\n\nLa ecuación de la recta de la regresión lineal es y = {m}x+({b})\n\n")
