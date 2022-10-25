@@ -27,6 +27,14 @@ def ECUACIONES(x,y):
     log_y = np.log(y,10)
     coefficients = np.polyfit(log_x,log_y,1)
     return coefficients
+def RAZONES(x,y):
+    for i in range(len(x)):
+         x_inv=[]
+         y_inv=[]
+         x_inv.append(1/x[i])
+         y_inv.append(1/y[i])
+         coefficients = np.polyfit(x_inv,y_inv,1)
+         return coefficients
  
 x=[1,3,5,7,9,11,13,15]
 y=[2.1,3.2,3.8,4,4.2,4.4,4.5,4.7]
@@ -38,4 +46,4 @@ for i in range(len(x)):
 print(f"MÍNIMOS CUADRADOS: y = {REGRESION[0]}x+({REGRESION[1]})\n")
 print(f"MODELO EXPONECIAL: y = {MODELOEXP(xnp,ynp)[0]}x+({MODELOEXP(xnp,ynp)[1]})")
 print(f"ECUACIONES DE POTENCIA: y = {ECUACIONES(xnp,ynp)[0]}x+({ECUACIONES(xnp,ynp)[1]}")
-print("RAZÓN DE CAMBIO")
+print(f"RAZÓN DE CAMBIO: y = y = {RAZONES(x,y)[0]}x+({RAZONES(x,y)[1]}")
