@@ -37,38 +37,41 @@ def GAUSS(A,B):
     X = np.transpose([X])
     return X
 
-x=[0,1,2,3,4,5,6]
-y=[-0.9,0,2,4.5,8.3,13,13,18]
+x=[1,1,2,3,1,2,3,3]
+y=[-1,0,0,1,1,2,2,0]
+z=[1.6,3,1.1,1.2,3.2,3.3,1.7,0.1]
+
 Sr=0
-sum_y=0
+sum_z=0
+sum_xz=0
+sum_yz=0
 sum_x=0
 sum_x2=0
-sum_x3=0
-sum_x4=0
 sum_xy=0
-sum_x2y=0
+sum_y2=0
+sum_y=0 
 n=len(x)
 for i in range(len(x)):
-    sum_x+=x[i]
-    sum_x2+=x[i]*x[i]
-    sum_x3+=x[i]*x[i]*x[i]
-    sum_x4+=x[i]*x[i]*x[i]*x[i]
-    sum_y+=y[i]
+    sum_z+= z[i]
+    sum_xz+=z[i]*x[i]
+    sum_yz+=z[i]*y[i]
+    sum_x+= x[i]
+    sum_x2+=x[i]**2
     sum_xy+=x[i]*y[i]
-    sum_x2y+=x[i]*x[i]*y[i]
-
-A = np.array([[n,sum_x,sum_x2],
-             [sum_x,sum_x2,sum_x3],
-             [sum_x2,sum_x3,sum_x4]])
+    sum_y2+=y[i]**2
+    sum_y+= y[i]
+A = np.array([[n,sum_x,sum_y],
+             [sum_x,sum_x2,sum_xy],
+             [sum_y,sum_xy,sum_y2]])
 B = np.array([[sum_y],
-             [sum_xy],
-             [sum_x2y]])
+             [sum_xz],
+             [sum_zy]])
 print(GAUSS(A,B))
 a0=GAUSS(A,B)[0]
 a1=GAUSS(A,B)[1]
 a2=GAUSS(A,B)[2]
 Sr=0
 for i in range(len(x)):
-    Sr+=(y[i]-a0-a1*x[i]-(a2*x[i]**2))**2
+    Sr+=(z[i]-a0-a1*x[i]-a2*y[i])**2
 print(f"La función resultante es y = {a0}x1 + {a1}x2 + {a2}x3 + e")
 print(f"El coeficiente de correlación es {Sr}")
