@@ -70,5 +70,5 @@ a2=GAUSS(A,B)[2]
 Sr=0
 for i in range(len(x)):
     Sr+=(y[i]-a0-a1*x[i]-(a2*x[i]**2))**2
-print(f"La función resultante es y = {a0}x1 + {a1}x2 + {a2}x3 + e")
+print(f"La función resultante es y = {a0} + {a1}x + {a2}x2 + e")
 print(f"El coeficiente de correlación es {Sr}")
