@@ -35,10 +35,11 @@ def GAUSS(A,B):
         AB[i,:] = AB[i,:]/AB[i,i]
     X = np.copy(AB[:,ultcolumna])
     X = np.transpose([X])
-    return [X[0][0],X[0][1],X[0][2]]
+    return X
 
 x=[0,1,2,3,4,5,6]
 y=[-0.9,0,2,4.5,8.3,13,13,18]
+Sr=0
 sum_y=0
 sum_x=0
 sum_x2=0
@@ -62,5 +63,12 @@ A = np.array([[n,sum_x,sum_x2],
 B = np.array([[sum_y],
              [sum_xy],
              [sum_x2y]])
-    
-print(f"La función resultante es y = {GAUSS(A,B)[0]}x1 + {GAUSS(A,B)[1]}x2 + {GAUSS(A,B)[2]}x3 + e")
+print(GAUSS(A,B))
+a0=GAUSS(A,B)[0]
+a1=GAUSS(A,B)[1]
+a2=GAUSS(A,B)[2]
+Sr=0
+for i in range(len(x)):
+    Sr+=(y[i]-a0-a1*x[i]-(a2*x[i]**2))**2
+print(f"La función resultante es y = {a0}x1 + {a1}x2 + {a2}x3 + e")
+print(f"El coeficiente de correlación es {Sr}")
